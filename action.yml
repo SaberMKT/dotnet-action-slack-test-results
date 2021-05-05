@@ -18,4 +18,4 @@ outputs:
     description: 'Amount of skipped tests'
 runs:
   using: 'node12'
-  main: 'main.js'
+  main: 'index.js'
