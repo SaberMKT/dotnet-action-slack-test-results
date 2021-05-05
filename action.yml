@@ -1,0 +1,21 @@
+name: 'Fetch results from test'
+description: 'This action tries to fetch results from a .trx test results and save the results somewhere'
+inputs:
+  filepath:
+    description: 'Path to .trx file'
+    required: true
+  slack_url: 
+    description: "Url to slack"
+    required: true
+outputs:
+  total:
+    description: 'Amount of total tests'
+  passed:
+    description: 'Amount of passed tests'
+  failed:
+    description: 'Amount of failed tests'
+  skipped:
+    description: 'Amount of skipped tests'
+runs:
+  using: 'node12'
+  main: 'main.js'
