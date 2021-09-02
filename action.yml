@@ -7,6 +7,9 @@ inputs:
   slack_url: 
     description: "Url to slack"
     required: true
+  is_production:
+    description: "Is production (boolean)"
+    required: true
 outputs:
   total:
     description: 'Amount of total tests'
