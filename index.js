@@ -7,6 +7,7 @@ const axios = require('axios');
 try {
   const filepath = core.getInput('filepath');
   const slack_url = core.getInput('slack_url');
+  const is_production = core.getInput('is_production');
 
   fs.readdir(filepath, (err, files) => {
     const path = files[0];
@@ -21,11 +22,18 @@ try {
       const passed = data.passed;
       const failed = data.failed;
 
+      var message = "";
+      if(is_production) {
+        message = "Uqrew Backend Production Builder" 
+      } else {
+        message = "Uqrew Backend Development Builder" 
+      }
+      
       axios
         .post(slack_url, {
           "channel":"#uqrew",
-          "icon_emoji":":serega:",
-          "username":"Uqrew Backend Builder",
+          "icon_emoji":":psihopatych:",
+          "username": message,
           "text":`Test results:\n Total: ${total}. Passed: ${passed}. Failed: ${failed}`
         })
         .then(res => {
